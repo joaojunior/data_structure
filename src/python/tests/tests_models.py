@@ -33,3 +33,18 @@ class TestUndirectedGraph(unittest.TestCase, BaseTestGraph):
         self.assertEqual('edge1', edge.label)
         self.assertEqual(node1, edge.node_source)
         self.assertEqual(node2, edge.node_destination)
+
+    def test_get_edge_exist(self):
+        node1 = self.graph.add_node(label='node1')
+        node2 = self.graph.add_node(label='node2')
+        edge = self.graph.add_edge(node1, node2, 'edge1', weight=1)
+        self.assertEqual(edge,
+                         self.graph.get_edge_between_nodes('node1', 'node2'))
+        self.assertEqual(edge,
+                         self.graph.get_edge_between_nodes('node2', 'node1'))
+
+    def test_get_edge_not_exist(self):
+        self.assertEqual(None,
+                         self.graph.get_edge_between_nodes('node1', 'node2'))
+        self.assertEqual(None,
+                         self.graph.get_edge_between_nodes('node2', 'node1'))
