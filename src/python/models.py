@@ -7,9 +7,13 @@ class Node(object):
 class Graph(object):
     def __init__(self):
         self.nodes = {}
+        self.edges = {}
 
     def number_of_nodes(self):
         return len(self.nodes.keys())
+
+    def number_of_edges(self):
+        return len(self.edges.keys())
 
 
 class DirectedGraph(Graph):
