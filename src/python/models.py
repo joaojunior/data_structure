@@ -28,18 +28,24 @@ class Graph(object):
         self.nodes.append(node)
         return node
 
-
-class DirectedGraph(Graph):
-    pass
-
-
-class UndirectedGraph(Graph):
     def add_edge(self, node_source, node_destination, label='', weight=0):
         edge = Edge(node_source, node_destination, label, weight)
         id_edge = (edge.node_source.label, edge.node_destination.label)
         self.edges[id_edge] = edge
         return edge
 
+
+class DirectedGraph(Graph):
+    def add_arc(self, node_source, node_destination, label='', weight=0):
+        arc = self.add_edge(node_source, node_destination, label, weight)
+        return arc
+
+    def get_arc_between_nodes(self, node_label1, node_label2):
+        edge = self.edges.get((node_label1, node_label2), None)
+        return edge
+
+
+class UndirectedGraph(Graph):
     def get_edge_between_nodes(self, node_label1, node_label2):
         edge = self.edges.get((node_label1, node_label2), None)
         if edge is None:

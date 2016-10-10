@@ -21,6 +21,24 @@ class TestDirectedGraph(unittest.TestCase, BaseTestGraph):
     def setUp(self):
         self.graph = DirectedGraph()
 
+    def test_add_arc(self):
+        node1 = self.graph.add_node(label='node1')
+        node2 = self.graph.add_node(label='node2')
+        arc = self.graph.add_arc(node1, node2, 'arc1', weight=1)
+        self.assertEqual('arc1', arc.label)
+        self.assertEqual(1, arc.weight)
+        self.assertEqual(node1, arc.node_source)
+        self.assertEqual(node2, arc.node_destination)
+
+    def test_get_arc_exist(self):
+        node1 = self.graph.add_node(label='node1')
+        node2 = self.graph.add_node(label='node2')
+        arc = self.graph.add_arc(node1, node2, 'arc1', weight=1)
+        self.assertEqual(arc,
+                         self.graph.get_arc_between_nodes('node1', 'node2'))
+        self.assertEqual(None,
+                         self.graph.get_arc_between_nodes('node2', 'node1'))
+
 
 class TestUndirectedGraph(unittest.TestCase, BaseTestGraph):
     def setUp(self):
@@ -31,6 +49,7 @@ class TestUndirectedGraph(unittest.TestCase, BaseTestGraph):
         node2 = self.graph.add_node(label='node2')
         edge = self.graph.add_edge(node1, node2, 'edge1', weight=1)
         self.assertEqual('edge1', edge.label)
+        self.assertEqual(1, edge.weight)
         self.assertEqual(node1, edge.node_source)
         self.assertEqual(node2, edge.node_destination)
 
