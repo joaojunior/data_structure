@@ -1,0 +1,12 @@
+This is an implementation of LinkeList in Python.
+
+# The linked list has the methods:
+	- insert
+	- search
+	- delete
+
+# Big-O notation for worst case
+Here, `n` is the number of items in the list
+	- insert: O(n)
+	- search: O(n)
+	- delete: O(n)
