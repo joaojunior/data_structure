@@ -31,3 +31,20 @@ class LinkedList():
             else:
                 root = root.next
         return item_found
+
+    def delete(self, item):
+        root = self.root
+        deleted = False
+        if root is not None:
+            if item.id_ == root.id_:
+                deleted = True
+                self.root = root.next
+            while deleted is False and root.next is not None:
+                if item.id_ == root.next.id_:
+                    root.next = root.next.next
+                    deleted = True
+                else:
+                    root = root.next
+        if deleted is True:
+            self.size -= 1
+        return deleted
