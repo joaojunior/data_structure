@@ -53,6 +53,32 @@ class TestLinkedList(unittest.TestCase):
         self._assert_item(item3, self.linked_list.root.next.next)
         self.assertEqual(None, self.linked_list.root.next.next.next)
 
+    def test_search_item_exist(self):
+        item1 = create_item(1, 1)
+        item2 = create_item(2, 2)
+        item3 = create_item(3, 3)
+        self.linked_list.insert(item1)
+        self.linked_list.insert(item2)
+        self.linked_list.insert(item3)
+
+        expected = self.linked_list.search(item3)
+        self.assertEqual(expected, item3)
+
+    def test_search_item_not_exist(self):
+        item1 = create_item(1, 1)
+        item2 = create_item(2, 2)
+        item3 = create_item(3, 3)
+        item4 = create_item(4, 4)
+        self.linked_list.insert(item1)
+        self.linked_list.insert(item2)
+        self.linked_list.insert(item3)
+
+        self.assertEqual(None, self.linked_list.search(item4))
+
+    def test_search_in_list_empty(self):
+        item1 = create_item(1, 1)
+        self.assertEqual(None, self.linked_list.search(item1))
+
 
 if __name__ == '__main__':
     unittest.main()

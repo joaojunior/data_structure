@@ -21,3 +21,13 @@ class LinkedList():
                     root.next = item
                     root = item
                 root = root.next
+
+    def search(self, item):
+        root = self.root
+        item_found = None
+        while item_found is None and root is not None:
+            if item.id_ == root.id_:
+                item_found = item
+            else:
+                root = root.next
+        return item_found
