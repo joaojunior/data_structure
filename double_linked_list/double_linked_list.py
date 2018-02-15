@@ -21,3 +21,13 @@ class DoubleLinkedList():
             item.before = root
             root.next = item
         self.size += 1
+
+    def search(self, id_):
+        founded = None
+        root = self.root
+        while founded is None and root is not None:
+            if id_ == root.id_:
+                founded = root
+            else:
+                root = root.next
+        return founded

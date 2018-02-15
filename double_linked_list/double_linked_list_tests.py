@@ -58,6 +58,31 @@ class TestDoubleLinkedList(unittest.TestCase):
         self.assertEqual(item2, self.double_list.root.next.next.before)
         self.assertEqual(item1, self.double_list.root.next.next.before.before)
 
+    def test_search_item_exist(self):
+        item1 = create_item(1, 1)
+        item2 = create_item(2, 2)
+        item3 = create_item(3, 3)
+
+        self.double_list.insert(item1)
+        self.double_list.insert(item2)
+        self.double_list.insert(item3)
+
+        self.assertEqual(item3, self.double_list.search(item3.id_))
+
+    def test_search_item_not_exist(self):
+        item1 = create_item(1, 1)
+        item2 = create_item(2, 2)
+        item3 = create_item(3, 3)
+
+        self.double_list.insert(item1)
+        self.double_list.insert(item2)
+        self.double_list.insert(item3)
+
+        self.assertEqual(None, self.double_list.search(4))
+
+    def test_search_in_list_empty(self):
+        self.assertEqual(None, self.double_list.search(1))
+
 
 if __name__ == '__main__':
     unittest.main()
