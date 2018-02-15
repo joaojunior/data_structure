@@ -61,7 +61,7 @@ class TestLinkedList(unittest.TestCase):
         self.linked_list.insert(item2)
         self.linked_list.insert(item3)
 
-        expected = self.linked_list.search(item3)
+        expected = self.linked_list.search(item3.id_)
         self.assertEqual(expected, item3)
 
     def test_search_item_not_exist(self):
@@ -73,7 +73,7 @@ class TestLinkedList(unittest.TestCase):
         self.linked_list.insert(item2)
         self.linked_list.insert(item3)
 
-        self.assertEqual(None, self.linked_list.search(item4))
+        self.assertEqual(None, self.linked_list.search(item4.id_))
 
     def test_search_in_list_empty(self):
         item1 = create_item(1, 1)
@@ -87,7 +87,7 @@ class TestLinkedList(unittest.TestCase):
         self.linked_list.insert(item2)
         self.linked_list.insert(item3)
 
-        self.assertEqual(True, self.linked_list.delete(item3))
+        self.assertEqual(item3, self.linked_list.delete(item3.id_))
         self.assertEqual(2, self.linked_list.size)
         self.assertEqual(None, self.linked_list.root.next.next)
 
@@ -99,7 +99,7 @@ class TestLinkedList(unittest.TestCase):
         self.linked_list.insert(item2)
         self.linked_list.insert(item3)
 
-        self.assertEqual(True, self.linked_list.delete(item1))
+        self.assertEqual(item1, self.linked_list.delete(item1.id_))
         self.assertEqual(2, self.linked_list.size)
         self.assertEqual(None, self.linked_list.root.next.next)
 
@@ -111,16 +111,27 @@ class TestLinkedList(unittest.TestCase):
         self.linked_list.insert(item2)
         self.linked_list.insert(item3)
 
-        self.assertEqual(True, self.linked_list.delete(item2))
+        self.assertEqual(item2, self.linked_list.delete(item2.id_))
         self.assertEqual(2, self.linked_list.size)
         self.assertEqual(None, self.linked_list.root.next.next)
 
     def test_delete_list_empty(self):
         item1 = create_item(1, 1)
 
-        self.assertEqual(False, self.linked_list.delete(item1))
+        self.assertEqual(None, self.linked_list.delete(item1))
         self.assertEqual(0, self.linked_list.size)
         self.assertEqual(None, self.linked_list.root)
+
+    def test_try_delete_item_not_exist(self):
+        item1 = create_item(1, 1)
+        item2 = create_item(2, 2)
+        item3 = create_item(3, 3)
+        self.linked_list.insert(item1)
+        self.linked_list.insert(item2)
+        self.linked_list.insert(item3)
+
+        self.assertEqual(None, self.linked_list.delete(4))
+        self.assertEqual(3, self.linked_list.size)
 
 
 if __name__ == '__main__':
