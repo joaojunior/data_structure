@@ -83,6 +83,51 @@ class TestDoubleLinkedList(unittest.TestCase):
     def test_search_in_list_empty(self):
         self.assertEqual(None, self.double_list.search(1))
 
+    def test_remove_last_item(self):
+        item1 = create_item(1, 1)
+        item2 = create_item(2, 2)
+        item3 = create_item(3, 3)
+
+        self.double_list.insert(item1)
+        self.double_list.insert(item2)
+        self.double_list.insert(item3)
+
+        item_removed = self.double_list.delete(item3.id_)
+        self.assertEqual(item3, item_removed)
+        self.assertEqual(2, self.double_list.size)
+        self.assertEqual(item1, self.double_list.root)
+        self.assertEqual(item2, self.double_list.root.next)
+
+    def test_remove_first_item(self):
+        item1 = create_item(1, 1)
+        item2 = create_item(2, 2)
+        item3 = create_item(3, 3)
+
+        self.double_list.insert(item1)
+        self.double_list.insert(item2)
+        self.double_list.insert(item3)
+
+        item_removed = self.double_list.delete(item1.id_)
+        self.assertEqual(item1, item_removed)
+        self.assertEqual(2, self.double_list.size)
+        self.assertEqual(item2, self.double_list.root)
+        self.assertEqual(item3, self.double_list.root.next)
+
+    def test_remove_middle_item(self):
+        item1 = create_item(1, 1)
+        item2 = create_item(2, 2)
+        item3 = create_item(3, 3)
+
+        self.double_list.insert(item1)
+        self.double_list.insert(item2)
+        self.double_list.insert(item3)
+
+        item_removed = self.double_list.delete(item2.id_)
+        self.assertEqual(item2, item_removed)
+        self.assertEqual(2, self.double_list.size)
+        self.assertEqual(item1, self.double_list.root)
+        self.assertEqual(item3, self.double_list.root.next)
+
 
 if __name__ == '__main__':
     unittest.main()

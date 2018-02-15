@@ -31,3 +31,23 @@ class DoubleLinkedList():
             else:
                 root = root.next
         return founded
+
+    def delete(self, id_):
+        item = None
+        if self.root is not None and self.root.id_ == id_:
+            item = self.root
+            self.root = self.root.next
+            self.root.next.before = self.root
+        else:
+            root = self.root
+            while root.next is not None and item is None:
+                if root.next.id_ == id_:
+                    item = root.next
+                    root.next = root.next.next
+                    if root.next is not None:
+                        root.next.before = root
+                else:
+                    root = root.next
+        if item is not None:
+            self.size -= 1
+        return item
