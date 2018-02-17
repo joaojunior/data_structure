@@ -16,6 +16,6 @@ class Stack():
     def pop(self):
         item = None
         if self.size > 0:
-            item = self._items.pop(0)
+            item = self._items.pop()
             self.size -= 1
         return item
