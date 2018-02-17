@@ -1,0 +1,7 @@
+Implementation of queue in Python.
+
+It has the methods enqueue and dequeue
+
+# Big-O notation for the worst case
+	- enqueue: O(1), consider that append one element in a list in python is O(1)
+	- dequeue: O(1), consider that pop the first element i na list in python is O(1)
