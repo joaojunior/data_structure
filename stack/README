@@ -1,0 +1,7 @@
+This in an implementation of stack in python.
+
+It has the methods: push and pop.
+
+# Big-O notation of complexity in worst-case:
+	- push: O(1), consider that insert one element in the final of the list in python is O(1)
+	- pop: O(1), consider that remove one element from the begin of a list in python is O(1)
