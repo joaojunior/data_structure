@@ -26,3 +26,23 @@ class BinaryTree():
                     inserted = True
                 root = root.left
         self.size += 1
+
+    def search(self, id_):
+        if self.root is not None:
+            if self.root.id_ == id_:
+                return self.root
+            else:
+                return (self._search(id_, self.root.left) or
+                        self._search(id_, self.root.right))
+        else:
+            return None
+
+    def _search(self, id_, root):
+        if root is not None:
+            if root.id_ == id_:
+                return root
+            else:
+                return (self._search(id_, root.left) or
+                        self._search(id_, root.right))
+        else:
+            return None

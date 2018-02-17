@@ -49,13 +49,49 @@ class TestBinaryTree(unittest.TestCase):
         self.assertEqual(item3, self.binary_tree.root.right)
 
     def test_search_head(self):
-        pass
+        item1 = create_item(1, 1)
 
-    def test_search_middle(self):
-        pass
+        self.binary_tree.insert(item1)
+        result = self.binary_tree.search(item1.id_)
+        self.assertEqual(item1, result)
 
-    def test_search_leaf(self):
-        pass
+    def test_search_left_child(self):
+        item1 = create_item(1, 1)
+        item2 = create_item(2, 2)
+
+        self.binary_tree.insert(item1)
+        self.binary_tree.insert(item2)
+
+        result = self.binary_tree.search(item2.id_)
+        self.assertEqual(item2, result)
+
+    def test_search_right_child(self):
+        item1 = create_item(1, 1)
+        item2 = create_item(2, 2)
+        item3 = create_item(3, 3)
+
+        self.binary_tree.insert(item1)
+        self.binary_tree.insert(item2)
+        self.binary_tree.insert(item3)
+
+        result = self.binary_tree.search(item3.id_)
+        self.assertEqual(item3, result)
+
+    def test_search_in_empty_binary_tree(self):
+        result = self.binary_tree.search(1)
+        self.assertEqual(None, result)
+
+    def test_search_item_not_exist(self):
+        item1 = create_item(1, 1)
+        item2 = create_item(2, 2)
+        item3 = create_item(3, 3)
+
+        self.binary_tree.insert(item1)
+        self.binary_tree.insert(item2)
+        self.binary_tree.insert(item3)
+
+        result = self.binary_tree.search(4)
+        self.assertEqual(None, result)
 
     def test_search_element_not_exist(self):
         pass
