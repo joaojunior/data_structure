@@ -35,3 +35,16 @@ class BinarySearchTree():
                     else:
                         root = root.left
         self.number_of_nodes += 1
+
+    def search(self, value):
+        return self.__search__(value, self.root)
+
+    def __search__(self, value, root):
+        if root is None:
+            return None
+        elif root.value == value:
+            return root
+        elif value < root.value:
+            return self.__search__(value, root.left)
+        else:
+            return self.__search__(value, root.right)
