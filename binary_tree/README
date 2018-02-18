@@ -1,0 +1,12 @@
+This is an implementation of BinaryTree in Python.
+
+It has the methods: insert, search, remove, node_is_leaf, find_lead and _parent
+
+# Big-o notation of the worst-case
+here n is the number of items in the binary tree
+	- insert: O(n), in the worstcase, the binary tree is like a linked-list
+	- search: O(n), how the binary tree is not a search binary tree, is necessary looking for all the items in the worst-case
+	- remove: O(n), is necessary search the item and then remove
+    - node_is_leaf: O(1), verify only if the children are None
+	- find_leaf: O(n), in the worstcase, the binary tree is like a linked-list and is necessary search in this
+	- _parent: O(n), is necessary lokking for the item in the binary tree
