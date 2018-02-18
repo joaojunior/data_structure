@@ -1,0 +1,12 @@
+This is an implementation of Binary search tree in Python
+
+It has the main methods: insert, search, remove, node_is_leaf, find_leaf, _parent and min_value_node
+
+# Big-O notation of worst case
+Here, n is the number of nodes in the tree and h is the size of the tree.
+	- insert: O(h), is necessary find the correct location to insert a new node
+	- search: O(h), if the binary search tree is balancead, h is equal lg(n). If binary tree is similar a linked list, h is equal n
+	- remove: O(h), is necessary lokking for the min of the right subtree and then replace and remove the node
+	- node_is_leaf: O(1), only verify if has children
+	- find_lead: O(h), is necessary searching in the tree
+	- _parent: O(h) is necessary searching in the tree
