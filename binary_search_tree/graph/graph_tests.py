@@ -29,12 +29,12 @@ class TestEmptyGraph(unittest.TestCase):
 
     def test_insert_edge(self):
         edge = create_edge(0, 1, 10)
-        self.graph.insert(edge)
+        self.graph.insert_edge(edge)
         self.assertEqual(1, self.graph.number_of_edges)
         self.assertEqual(2, self.graph.number_of_nodes)
 
     def test_remove_edge(self):
-        result = self.graph.remove(source=0, dest=1)
+        result = self.graph.remove_edge(source=0, dest=1)
         self.assertEqual(None, result)
 
     def test_remove_node(self):
@@ -49,8 +49,8 @@ class TestGraph(unittest.TestCase):
     def test_insert_two_edges(self):
         edge1 = create_edge(0, 1, 10)
         edge2 = create_edge(0, 2, 20)
-        self.graph.insert(edge1)
-        self.graph.insert(edge2)
+        self.graph.insert_edge(edge1)
+        self.graph.insert_edge(edge2)
         expected_nodes = set([0, 1, 2])
         expected_edges = {(0, 1): edge1,
                           (0, 2): edge2}
@@ -61,9 +61,9 @@ class TestGraph(unittest.TestCase):
         edge1 = create_edge(0, 1, 10)
         edge2 = create_edge(0, 2, 20)
         edge3 = create_edge(1, 3, 20)
-        self.graph.insert(edge1)
-        self.graph.insert(edge2)
-        self.graph.insert(edge3)
+        self.graph.insert_edge(edge1)
+        self.graph.insert_edge(edge2)
+        self.graph.insert_edge(edge3)
         expected_nodes = set([0, 1, 2, 3])
         expected_edges = {(0, 1): edge1,
                           (0, 2): edge2,
@@ -74,31 +74,31 @@ class TestGraph(unittest.TestCase):
     def test_remove_one_from_two_edges(self):
         edge1 = create_edge(0, 1, 10)
         edge2 = create_edge(0, 2, 20)
-        self.graph.insert(edge1)
-        self.graph.insert(edge2)
+        self.graph.insert_edge(edge1)
+        self.graph.insert_edge(edge2)
         expected_nodes = set([0, 1, 2])
         expected_edges = {(0, 1): edge1}
 
-        self.graph.remove(edge2.source, edge2.dest)
+        self.graph.remove_edge(edge2.source, edge2.dest)
         result = verify_graph(self.graph, expected_nodes, expected_edges)
         self.assertTrue(result)
 
     def test_remove_all_edges(self):
         edge1 = create_edge(0, 1, 10)
         edge2 = create_edge(0, 2, 20)
-        self.graph.insert(edge1)
-        self.graph.insert(edge2)
+        self.graph.insert_edge(edge1)
+        self.graph.insert_edge(edge2)
         expected_nodes = set([0, 1, 2])
         expected_edges = {}
 
-        self.graph.remove(edge1.source, edge1.dest)
-        self.graph.remove(edge2.source, edge2.dest)
+        self.graph.remove_edge(edge1.source, edge1.dest)
+        self.graph.remove_edge(edge2.source, edge2.dest)
         result = verify_graph(self.graph, expected_nodes, expected_edges)
         self.assertTrue(result)
 
     def test_verify_edge_exist_when_edge_exist(self):
         edge1 = create_edge(0, 1, 10)
-        self.graph.insert(edge1)
+        self.graph.insert_edge(edge1)
 
         self.assertTrue(self.graph.edge_exist(edge1.source, edge1.dest))
 
@@ -110,8 +110,8 @@ class TestGraph(unittest.TestCase):
     def test_remove_one_node(self):
         edge1 = create_edge(0, 1, 10)
         edge2 = create_edge(0, 2, 20)
-        self.graph.insert(edge1)
-        self.graph.insert(edge2)
+        self.graph.insert_edge(edge1)
+        self.graph.insert_edge(edge2)
         self.graph.remove_node(1)
 
         expected_nodes = set([0, 2])
@@ -122,8 +122,8 @@ class TestGraph(unittest.TestCase):
     def test_remove_all_nodes(self):
         edge1 = create_edge(0, 1, 10)
         edge2 = create_edge(0, 2, 20)
-        self.graph.insert(edge1)
-        self.graph.insert(edge2)
+        self.graph.insert_edge(edge1)
+        self.graph.insert_edge(edge2)
         self.graph.remove_node(0)
         self.graph.remove_node(1)
         self.graph.remove_node(2)

@@ -18,12 +18,12 @@ class Graph():
     def number_of_nodes(self):
         return len(self.nodes)
 
-    def insert(self, edge):
+    def insert_edge(self, edge):
         self.nodes.add(edge.source)
         self.nodes.add(edge.dest)
         self.edges[(edge.source, edge.dest)] = edge
 
-    def remove(self, source, dest):
+    def remove_edge(self, source, dest):
         edge = None
         if (source, dest) in self.edges:
             edge = self.edges.pop((source, dest))
@@ -40,4 +40,4 @@ class Graph():
                 if edge[0] == node or edge[1] == node:
                     edges_to_remove.append(edge)
         for edge in edges_to_remove:
-            self.remove(edge[0], edge[1])
+            self.remove_edge(edge[0], edge[1])
