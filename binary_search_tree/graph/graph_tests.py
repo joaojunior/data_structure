@@ -38,7 +38,8 @@ class TestEmptyGraph(unittest.TestCase):
         self.assertEqual(None, result)
 
     def test_remove_node(self):
-        pass
+        result = self.graph.remove_node(node=0)
+        self.assertEqual(None, result)
 
 
 class TestGraph(unittest.TestCase):
@@ -107,10 +108,30 @@ class TestGraph(unittest.TestCase):
         self.assertFalse(self.graph.edge_exist(edge1.source, edge1.dest))
 
     def test_remove_one_node(self):
-        pass
+        edge1 = create_edge(0, 1, 10)
+        edge2 = create_edge(0, 2, 20)
+        self.graph.insert(edge1)
+        self.graph.insert(edge2)
+        self.graph.remove_node(1)
+
+        expected_nodes = set([0, 2])
+        expected_edges = {(0, 2): edge2}
+        result = verify_graph(self.graph, expected_nodes, expected_edges)
+        self.assertTrue(result)
 
     def test_remove_all_nodes(self):
-        pass
+        edge1 = create_edge(0, 1, 10)
+        edge2 = create_edge(0, 2, 20)
+        self.graph.insert(edge1)
+        self.graph.insert(edge2)
+        self.graph.remove_node(0)
+        self.graph.remove_node(1)
+        self.graph.remove_node(2)
+
+        expected_nodes = set()
+        expected_edges = {}
+        result = verify_graph(self.graph, expected_nodes, expected_edges)
+        self.assertTrue(result)
 
 
 if __name__ == '__main__':

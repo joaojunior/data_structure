@@ -31,3 +31,13 @@ class Graph():
 
     def edge_exist(self, source, dest):
         return (source, dest) in self.edges
+
+    def remove_node(self, node):
+        edges_to_remove = []
+        if node in self.nodes:
+            self.nodes.remove(node)
+            for edge in self.edges:
+                if edge[0] == node or edge[1] == node:
+                    edges_to_remove.append(edge)
+        for edge in edges_to_remove:
+            self.remove(edge[0], edge[1])
