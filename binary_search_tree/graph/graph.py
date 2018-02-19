@@ -26,5 +26,8 @@ class Graph():
     def remove(self, source, dest):
         edge = None
         if (source, dest) in self.edges:
-            pass
+            edge = self.edges.pop((source, dest))
         return edge
+
+    def edge_exist(self, source, dest):
+        return (source, dest) in self.edges
