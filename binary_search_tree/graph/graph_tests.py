@@ -41,6 +41,10 @@ class TestEmptyGraph(unittest.TestCase):
         result = self.graph.remove_node(node=0)
         self.assertEqual(None, result)
 
+    def test_adjacents(self):
+        result = self.graph.adjacents(0)
+        self.assertEqual([], result)
+
 
 class TestGraph(unittest.TestCase):
     def setUp(self):
@@ -132,6 +136,16 @@ class TestGraph(unittest.TestCase):
         expected_edges = {}
         result = verify_graph(self.graph, expected_nodes, expected_edges)
         self.assertTrue(result)
+
+    def test_adjacents(self):
+        edge1 = create_edge(0, 1, 10)
+        edge2 = create_edge(0, 2, 20)
+        self.graph.insert_edge(edge1)
+        self.graph.insert_edge(edge2)
+
+        result = self.graph.adjacents(0)
+        expected = [1, 2]
+        self.assertEqual(expected, result)
 
 
 if __name__ == '__main__':

@@ -41,3 +41,13 @@ class Graph():
                     edges_to_remove.append(edge)
         for edge in edges_to_remove:
             self.remove_edge(edge[0], edge[1])
+
+    def adjacents(self, node):
+        adjacents = []
+        if node in self.nodes:
+            for edge in self.edges:
+                if node == edge[0]:
+                    adjacents.append(edge[1])
+                elif node == edge[1]:
+                    adjacents.append(edge[0])
+        return adjacents
