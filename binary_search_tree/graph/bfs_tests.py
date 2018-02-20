@@ -13,6 +13,7 @@ class TestBFS(unittest.TestCase):
         self.bfs = BFS()
         self.graph = Graph()
         self.graph.insert_edge(create_edge(0, 1, 10))
+        self.graph.insert_edge(create_edge(1, 3, 10))
         self.graph.insert_edge(create_edge(0, 2, 20))
         self.graph.insert_edge(create_edge(0, 3, 30))
         self.graph.insert_edge(create_edge(2, 3, 60))
