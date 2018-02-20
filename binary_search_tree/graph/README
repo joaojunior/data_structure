@@ -1,0 +1,10 @@
+This is a Python Implementation of Graph.
+
+It has the main methods insert_edge, remove_edge, edge_exist, remove_edge and adjacents.
+
+#Big-O notation to worst-case
+	- insert_edge: O(1)
+	- remove_edge: O(1)
+	- edge_exist: O(1)
+	- remove_node: O(E), where E is the number of edges in the graph
+	- adjacents: O(E), where E is the number of edges in the graph
