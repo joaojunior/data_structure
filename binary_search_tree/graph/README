@@ -1,10 +1,14 @@
-This is a Python Implementation of Graph.
+This is a Python Implementation of Graph and include the Breadth first search
 
 It has the main methods insert_edge, remove_edge, edge_exist, remove_edge and adjacents.
 
-#Big-O notation to worst-case
+#Big-O notation to worst-case in Graph
 	- insert_edge: O(1)
 	- remove_edge: O(1)
 	- edge_exist: O(1)
-	- remove_node: O(E), where E is the number of edges in the graph
-	- adjacents: O(E), where E is the number of edges in the graph
+	- remove_node: O(|E|), where E is the set of edges in the graph
+	- adjacents: O(|E|), where E is the set of edges in the graph
+
+
+#Big-O notation to worst-case in BFS
+	- bfs: O(|V + E|), where V is the set of nodes and E is the set of edges in the graph
