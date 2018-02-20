@@ -50,4 +50,4 @@ class Graph():
                     adjacents.append(edge[1])
                 elif node == edge[1]:
                     adjacents.append(edge[0])
-        return adjacents
+        return sorted(adjacents)
