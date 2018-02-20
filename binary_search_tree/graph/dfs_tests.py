@@ -1,6 +1,6 @@
 import unittest
 
-from bfs import BFS
+from dfs import DFS
 from graph import Edge, Graph
 
 
@@ -8,9 +8,9 @@ def create_edge(source, dest, size):
     return Edge(source, dest, size)
 
 
-class TestBFS(unittest.TestCase):
+class TestDFS(unittest.TestCase):
     def setUp(self):
-        self.bfs = BFS()
+        self.dfs = DFS()
         self.graph = Graph()
         self.graph.insert_edge(create_edge(0, 1, 10))
         self.graph.insert_edge(create_edge(1, 3, 10))
@@ -19,9 +19,9 @@ class TestBFS(unittest.TestCase):
         self.graph.insert_edge(create_edge(2, 3, 60))
         self.graph.insert_edge(create_edge(3, 4, 120))
 
-    def test_bfs(self):
-        result = self.bfs.bfs(0, self.graph)
-        expected = [0, 1, 2, 3, 4]
+    def test_dfs(self):
+        result = self.dfs.dfs(0, self.graph)
+        expected = [0, 1, 3, 2, 4]
         self.assertEqual(expected, result)
 
 
